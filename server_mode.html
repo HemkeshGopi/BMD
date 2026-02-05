@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Server Mode</title>
+<link rel="stylesheet" href="./static/css/main.css">
+</head>
+
+<body>
+
+<button id="themeBtn" class="theme-toggle">🌙 Dark</button>
+
+<main class="container">
+
+<div class="card">
+
+<h2>Server Dashboard</h2>
+<p class="muted">Demo dashboard</p>
+
+<table>
+
+<thead>
+<tr>
+<th>Time</th>
+<th>HR</th>
+<th>SpO2</th>
+<th>BP</th>
+<th>Sugar</th>
+<th>Status</th>
+</tr>
+</thead>
+
+<tbody id="tbody"></tbody>
+
+</table>
+
+</div>
+
+</main>
+
+<script src="./static/js/theme.js"></script>
+
+<script>
+
+// Simulated incoming data (replace with real backend later)
+function receiveData(data){
+
+const time = new Date().toLocaleTimeString();
+
+const hr = data.hr;
+const sp = data.spo2;
+const sys = data.bp_sys;
+const dia = data.bp_dia;
+const sugar = data.sugar;
+
+// Status check
+let status = "✅";
+
+if(hr<55||hr>110||sp<90||sys>140||dia>90||sugar>140){
+ status = "⚠️";
+}
+
+tbody.innerHTML = `
+<tr>
+<td>${time}</td>
+<td>${hr}</td>
+<td>${sp}</td>
+<td>${sys}/${dia}</td>
+<td>${sugar}</td>
+<td>${status}</td>
+</tr>` + tbody.innerHTML;
+
+}
+
+
+// Demo auto update
+setInterval(()=>{
+
+receiveData({
+ hr: 60 + Math.random()*40|0,
+ spo2: 92 + Math.random()*6|0,
+ bp_sys: 110 + Math.random()*25|0,
+ bp_dia: 70 + Math.random()*15|0,
+ sugar: 80 + Math.random()*40|0
+});
+
+},3000);
+
+</script>
+
+</body>
+</html>

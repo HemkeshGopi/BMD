@@ -1,0 +1,122 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root{
+--bg:#f9fafb;--card:#fff;--text:#111827;--muted:#6b7280;
+--border:#e5e7eb;--primary:#2563eb;
+}
+
+[data-theme="dark"]{
+--bg:#020617;--card:#020617;--text:#f8fafc;
+--muted:#94a3b8;--border:#1e293b;--primary:#3b82f6;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+font-family:Inter,sans-serif;
+background:var(--bg);
+color:var(--text);
+}
+
+.container{max-width:1100px;margin:auto;padding:2rem}
+
+.narrow{max-width:700px}
+
+.hero{text-align:center;padding:3rem 1rem}
+
+.subtitle{color:var(--muted)}
+
+.card{
+background:var(--card);
+border:1px solid var(--border);
+border-radius:16px;
+padding:1.5rem;
+margin-bottom:1.5rem;
+box-shadow:0 6px 20px rgba(0,0,0,.08);
+}
+
+.about-grid,.cta-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:1.5rem;
+margin-top:1.5rem;
+}
+
+.cta-card{
+display:block;
+background:var(--card);
+border:1px solid var(--border);
+border-radius:18px;
+padding:2rem;
+text-decoration:none;
+color:inherit;
+transition:.2s;
+}
+
+.cta-card:hover{
+transform:translateY(-4px);
+border-color:var(--primary);
+}
+
+.cta-icon{font-size:2rem}
+
+.theme-toggle{
+position:fixed;
+top:1rem;
+right:1rem;
+background:var(--card);
+border:1px solid var(--border);
+padding:.5rem .8rem;
+border-radius:20px;
+cursor:pointer;
+}
+
+.muted{color:var(--muted)}
+
+input,button{
+padding:.5rem;
+border-radius:8px;
+border:1px solid var(--border);
+font-family:inherit;
+}
+
+button{
+background:var(--primary);
+color:white;
+border:none;
+cursor:pointer;
+}
+
+button.outline{
+background:transparent;
+color:var(--primary);
+border:1px solid var(--primary);
+}
+
+.form-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:1rem;
+}
+
+.controls{display:flex;gap:1rem;margin-top:1rem}
+
+.alert-box{
+background:#fee2e2;
+border:1px solid #dc2626;
+color:#dc2626;
+padding:.7rem;
+border-radius:10px;
+margin:1rem 0;
+}
+
+.hidden{display:none}
+
+table{width:100%;border-collapse:collapse}
+
+th,td{
+padding:.5rem;
+border-bottom:1px solid var(--border);
+text-align:center;
+}

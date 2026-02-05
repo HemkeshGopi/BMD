@@ -1,0 +1,85 @@
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Watch Mode</title>
+<link rel="stylesheet" href="./static/css/main.css">
+</head>
+
+<body>
+
+<button id="themeBtn" class="theme-toggle">🌙 Dark</button>
+
+<main class="container narrow">
+
+<div class="card">
+
+<h2>Watch Simulator</h2>
+
+<div id="txCount" class="muted">Transmissions: 0</div>
+<div id="txStatus" class="muted">Idle</div>
+
+<div class="form-grid">
+
+<label>ID <input id="wid" value="WATCH-001"></label>
+<label>HR <input id="hr" type="number" value="80"></label>
+<label>SpO2 <input id="spo2" type="number" value="97"></label>
+
+
+<label>BP Sys <input id="bp_sys" type="number" value="120"></label>
+<label>BP Dia <input id="bp_dia" type="number" value="80"></label>
+<label>Sugar <input id="sugar" type="number" value="95"></label>
+
+</div>
+
+<div class="controls">
+<button id="send">Send</button>
+<button id="rand" class="outline">Random</button>
+</div>
+
+<div id="alert" class="alert-box hidden"></div>
+
+</div>
+
+</main>
+
+<script src="./static/js/theme.js"></script>
+
+<script>
+let tx=0;
+
+send.onclick=()=>{
+
+const hr=+document.getElementById("hr").value;
+const sp=+document.getElementById("spo2").value;
+const sys=+document.getElementById("bp_sys").value;
+const dia=+document.getElementById("bp_dia").value;
+const sugar=+document.getElementById("sugar").value;
+
+tx++;
+txCount.textContent="Transmissions: "+tx;
+txStatus.textContent="Last sent: "+new Date().toLocaleTimeString();
+
+if(hr<55||hr>110||sp<90||sys>140||dia>90||sugar>140){
+ alert.textContent="⚠️ Abnormal values detected";
+ alert.classList.remove("hidden");
+}else{
+ alert.classList.add("hidden");
+}
+
+};
+
+rand.onclick=()=>{
+bp_sys.value=110+Math.random()*20|0;
+bp_dia.value=70+Math.random()*15|0;
+sugar.value=80+Math.random()*40|0;
+
+hr.value=60+Math.random()*40|0;
+spo2.value=92+Math.random()*6|0;
+};
+</script>
+
+</body>
+</html>
